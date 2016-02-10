@@ -1,4 +1,4 @@
-var TypeDoc = require("../bin/typedoc.js");
+var TypeDoc = require("../index.js");
 var FS      = require('fs');
 var Path    = require('path');
 var Assert  = require("assert");
@@ -67,7 +67,8 @@ describe('Converter', function() {
             target: 'ES5',
             module: 'CommonJS',
             noLib:  true,
-            experimentalDecorators: true
+            experimentalDecorators: true,
+            jsx: 'react'
         });
     });
 
@@ -79,9 +80,9 @@ describe('Converter', function() {
             var result;
 
             it('converts fixtures', function() {
-                TypeDoc.models.resetReflectionID();
+                TypeDoc.resetReflectionID();
                 result = app.convert(app.expandInputFiles([path]));
-                Assert(result instanceof TypeDoc.models.ProjectReflection, 'No reflection returned');
+                Assert(result instanceof TypeDoc.ProjectReflection, 'No reflection returned');
             });
 
             it('matches specs', function() {
