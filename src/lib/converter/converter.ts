@@ -1,5 +1,6 @@
 import * as ts from "typescript";
 import * as Path from "path";
+import * as _ from "lodash";
 
 import {Application} from "../application";
 import {ParameterType} from "../utils/options/declaration";
